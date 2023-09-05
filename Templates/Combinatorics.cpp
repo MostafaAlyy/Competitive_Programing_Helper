@@ -50,3 +50,19 @@ vector<vector<int> > nCr(int n,int r){
     return table;
 
 }
+
+
+
+ /*
+  the time complexity O(n )
+  the space complexity  O(n ).
+  factorial n = permutation n 
+  */
+
+unsigned long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
