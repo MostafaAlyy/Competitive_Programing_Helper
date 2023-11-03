@@ -66,3 +66,20 @@ unsigned long long factorial(int n) {
         return n * factorial(n - 1);
     }
 }
+
+
+ /*
+  the time complexity O(n )
+  the space complexity  O(n ).
+  factorial n = permutation n 
+  use this if you want to use factorial many times
+  */
+const int N = 21;
+ull f[N];
+ull initFactorial(){
+    f[0]=1;
+    for (int i = 1; i < N; ++i) {
+        f[i] = f[i - 1] * i;
+    }
+}
+
