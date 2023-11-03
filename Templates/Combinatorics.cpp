@@ -76,7 +76,7 @@ unsigned long long factorial(int n) {
   */
 const int N = 21;
 ull f[N];
-ull initFactorial(){
+void initFactorial(){
     f[0]=1;
     for (int i = 1; i < N; ++i) {
         f[i] = f[i - 1] * i;
