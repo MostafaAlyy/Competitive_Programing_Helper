@@ -14,14 +14,18 @@ typedef unsigned long long ull;
 #define FOR1(i, n) for(int i=1;i<=n;i++)
 #define MULTI_TEST_CASE 0
 
-typedef tree<int, null_type,less_equal<int>, rb_tree_tag,tree_order_statistics_node_update> ordered_multiset;
+/*
+ * replace int with the data type you want
+ * if you want to make it from greater just replace less with greater
+ */
+typedef  tree<int, null_type,less_equal<>, rb_tree_tag,tree_order_statistics_node_update> ordered_multiset;
 typedef tree<int, null_type,less<>, rb_tree_tag,tree_order_statistics_node_update> ordered_set;
 
 
-
-void myerase(ordered_set &t, int v){
-    int rank = t.order_of_key(v);//Number of elements that are less than v in t
-    ordered_set::iterator it = t.find_by_order(rank); //Iterator that points to the (rank+1)th element in t
+//use this if you use ordered_multiset because normal erase do not work
+void myerase(ordered_multiset &t, int v){
+    int rank = t.order_of_key(v);
+    auto it = t.find_by_order(rank); 
     t.erase(it);
 }
 
@@ -29,24 +33,29 @@ void file();
 
 
 void solve() {
-    ordered_multiset st;
+    ordered_set st;
     int n;
     cin >> n;
-    long long sum = 0;
     for (int i = 0 ; i < n;i++)
     {
         int x;
         cin >> x;
         st.insert(x);
-        sum += st.order_of_key(x);
     }
-
+    // see what in st
     for (auto &it:st) {
         cout<<it<<" ";
     }
-    cout<<endl;
-    cout << sum << endl;
+    cout << endl;
 
+    // finding kth element
+    cout << "0th element: " << *st.find_by_order(0) << endl;
+
+    // finding number of elements smaller than X
+    cout << "No. of elems smaller than 6: " << st.order_of_key(6) << endl; // 2
+
+    // Remove elements
+    st.erase(1);
 
 }
 
