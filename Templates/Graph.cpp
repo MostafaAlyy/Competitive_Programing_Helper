@@ -1,8 +1,8 @@
 // ways to define graph
-bool g[n][n];
+bool g[N][N];
 vector<vector<int>>g;
-vector<int>g[n];
-multiset<int>g[n];
+vector<int>g[N];
+multiset<int>g[N];
 map<int,set<int >>g;
 
 /*
