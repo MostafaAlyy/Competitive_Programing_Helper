@@ -18,7 +18,7 @@ void dfs(int node ){
     }
 }
 
-//if you want to know if the current node is leaf or not use this way
+//if you want to know if the current node is a leaf or not use this way
 void dfs(int node){
     vis[node]=1;
     bool leaf=1;
