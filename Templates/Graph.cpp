@@ -32,3 +32,24 @@ void dfs(int node){
         ans++;
 }
 
+/*
+ * Topological Sort
+ * used when you have dependent things like tasks 
+ * Topological sort is a linear ordering of the vertices of a directed graph such that for every directed edge u -> v, vertex u comes before vertex v in the ordering. 
+ * Note: make DFS on every unvisited node to avoid leaving nodes 
+ */
+stack<int> stack1;
+void dfs(int node ){
+    vis[node]=1;
+    for (auto &nbr :g[node]) {
+        if(!vis[nbr])
+            dfs(nbr);
+    }
+    stack1.push(node);
+}
+//print result
+    while (!stack1.empty()){
+        cout<<stack1.top()<<" ";
+        stack1.pop();
+    }
+
