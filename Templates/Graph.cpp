@@ -52,4 +52,44 @@ void dfs(int node ){
         cout<<stack1.top()<<" ";
         stack1.pop();
     }
+void topological_sort(){
+    for (int i = 0; i <=n ; ++i){
+        if(!vis[i])
+            dfs(i);
+    }
+}
+    
 
+
+
+/*
+ *  Know if there are cycles or no   
+ *  NOTE:- vis should be int 
+ */
+bool cycle=false;
+int vis [N];
+void dfs(int node ){
+    vis[node]=1;
+    for (auto &nbr :g[node]) {
+        if(vis[nbr]==1){
+            cycle=1;
+            return;
+        }
+        if(!vis[nbr])
+            dfs(nbr);
+    }
+    vis[node]=2;
+}
+
+
+
+
+
+void clear_graph(){
+    for(int i=0;i<=n;i++)
+    {
+        g[i].clear();
+        vis[i]=0;
+    }
+    cycle=0;
+}
