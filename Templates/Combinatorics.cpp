@@ -11,7 +11,7 @@ ll nCr(ll n ,ll r){
         while (r){
             a=a*n;
             b=b*r;
-            ll g= gcd(a,b);
+            ll g= __gcd(a,b);
             a=a/g;
             b=b/g;
             n--;
