@@ -2,6 +2,7 @@
  /*
   the time complexity O(r)
   the space complexity  O(1).
+  can't used with mod 
   */
 ll nCr(ll n ,ll r){
     ll a=1,b=1;
