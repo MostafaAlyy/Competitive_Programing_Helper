@@ -68,6 +68,24 @@ void sieve()
 }
 
 
+/*
+ * if you have equation ax+by=gcd(a,b) and you want to know the x and y 
+ * this function return gcd
+ * the time complexity is O(log(n))
+ * The space complexity is O(log(n))
+ */
+
+ll  extended_euclid(ll a,ll b,ll &x,ll &y ){
+    if(b==0){
+        x=1,y=0;
+        return a;
+    }
+    ll g= extended_euclid(b,a%b,y,x);
+    y-=(a/b)*x;
+    return g;
+}
+
+
 // to use mod use this functions 
 ll add(ll a,ll b)
 {
@@ -85,3 +103,5 @@ ll divide(ll a,ll b)
 {
     return mul(a,powmod(b,mod-2));
 }
+
+
