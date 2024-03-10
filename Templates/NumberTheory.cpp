@@ -96,6 +96,18 @@ ull lcm_mod(ull a, ull b)
 	return (a/gcd(a,b))%mod*(b%mod); 
 }
 
+
+ull gcd(ull a,ull b)
+{
+    while( b != 0)
+	{
+		ull  t = b;
+		b= a %t;
+		a = t;
+	}
+	return a;
+}
+
 // to use mod use this functions 
 ll add(ll a,ll b)
 {
