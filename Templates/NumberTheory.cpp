@@ -85,6 +85,16 @@ ll  extended_euclid(ll a,ll b,ll &x,ll &y ){
     return g;
 }
 
+/*
+ * to calculate lcm with mod
+ * the time complexity is O(log(min(a, b)))
+ * The space complexity is  O(1)
+ */
+
+ull lcm_mod(ull a, ull b) 
+{ 
+	return (a/gcd(a,b))%mod*(b%mod); 
+}
 
 // to use mod use this functions 
 ll add(ll a,ll b)
