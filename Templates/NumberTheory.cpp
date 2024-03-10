@@ -101,7 +101,7 @@ ll sub(ll a,ll b)
 }
 ll divide(ll a,ll b)
 {
-    return mul(a,powmod(b,mod-2));
+    return mul(a,pow_mod(b,mod-2));
 }
 
 
