@@ -21,3 +21,6 @@ void clear_bits_in_range(int &n,int i,int j){
     int mask=a|b;
     n=n&mask;
 }
+
+// Note: - to get the closer power of n use log2(n)
+
