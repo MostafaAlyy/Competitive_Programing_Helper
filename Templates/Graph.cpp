@@ -33,6 +33,19 @@ void dfs(int node){
 }
 
 /*
+ * DFS in O(N)
+ * NOTE:- working only in tree
+ * the time complexity of DFS is O(V)
+ * The space complexity of DFS is O(V)
+ */
+void dfs(int current  ,int parent){
+    for (auto &nbr:g[current]) {
+        if(nbr!=parent)
+            dfs(nbr,current);
+    }
+}
+
+/*
  * Topological Sort
  * used when you have dependent things like tasks 
  * Topological sort is a linear ordering of the vertices of a directed graph such that for every directed edge u -> v, vertex u comes before vertex v in the ordering. 
