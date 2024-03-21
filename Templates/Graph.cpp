@@ -93,3 +93,43 @@ void clear_graph(){
     }
     cycle=0;
 }
+
+
+
+
+/*
+ * Check whether a given graph is Bipartite or not
+ * A bipartite graph is a type of graph whose vertices can be divided into two disjoint sets such that no two vertices within the same set are adjacent. 
+ * the time complexity of isBipartite is O(V+E)
+ * The space complexity of isBipartite is O(V)
+ * Note:- in this implementation, you should use an adjacency list, not matrix 
+ */
+vector<int>g[N];
+int n,m;
+bool isBipartite()
+{
+    int V=n;
+    vector<int> col(V, -1);
+    queue<pair<int, int> > q;
+    for (int i = 0; i < V; i++) {
+        if (col[i] == -1) {
+            q.push({ i, 0 });
+            col[i] = 0;
+            while (!q.empty()) {
+                pair<int, int> p = q.front();
+                q.pop();
+                int v = p.first;
+                int c = p.second;
+                for (int j : g[v]) {
+                    if (col[j] == c)
+                        return 0;
+                    if (col[j] == -1) {
+                        col[j] = (c) ? 0 : 1;
+                        q.push({ j, col[j] });
+                    }
+                }
+            }
+        }
+    }
+    return 1;
+}
