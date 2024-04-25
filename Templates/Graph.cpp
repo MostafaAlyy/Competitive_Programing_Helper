@@ -107,6 +107,29 @@ void clear_graph(){
     cycle=0;
 }
 
+/*
+ * BFS  
+ * the time complexity of DFS is O(V + E)
+ * The space complexity of DFS is O(V)
+ */
+
+void bfs(int start){
+    queue<int> q;
+    q.push(start);
+    vis[start]=true;
+    while (!q.empty()){
+        int node=q.front();
+        cout<<node<<endl;
+        q.pop();
+        for (auto nbr:g[node]) {
+            if(vis[nbr]){
+                q.push(nbr);
+                vis[nbr]=true;
+            }
+        }
+    }
+}
+
 
 
 
