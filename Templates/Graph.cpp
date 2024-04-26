@@ -179,6 +179,27 @@ ll dijkstra_shortest_path(ll start ,ll end ){
     }
     return -1;
 }
+// return the shortest path between start and the end
+// better at multi-test cases 
+ll dijkstra_shortest_path(ll start ,ll end ,vector<bool> &vis,vector<pair<ll,ll>> g[]){
+    priority_queue<pair<ll,ll>,deque<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
+    pq.push({0,start});
+    while (!pq.empty()){
+        pair<ll,ll> p = pq.top();
+        ll node =p.second,node_cost=p.first;
+
+        if(end==node) return node_cost;
+        pq.pop();
+        vis[node]=1;
+        for(auto [nbr_cost,nbr]:g[node])
+        {
+            if(!vis[nbr])
+                pq.push({node_cost+nbr_cost,nbr});
+        }
+    }
+    return -1;
+}
+
 
 
 const int N=507;
