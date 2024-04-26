@@ -134,6 +134,7 @@ void bfs(int start){
  * Digkistra BFS  
  * the time complexity of DFS is O((V + E) log V)
  * The space complexity of DFS is O(V)
+ *  finding the shortest path from the node to every other node and storing it in cost vector
  */
 const int N=1e5+7;
 vector<pair<ll,ll>>g[N];
@@ -158,6 +159,26 @@ void dijkstra_shortest_path(ll start){
     }
 }
 
+// return the shortest path between start and the end
+ll dijkstra_shortest_path(ll start ,ll end ){
+    memset(vis,0,sizeof(vis));
+    priority_queue<pair<ll,ll>,deque<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
+    pq.push({0,start});
+    while (!pq.empty()){
+        pair<ll,ll> p = pq.top();
+        ll node =p.second,node_cost=p.first;
+
+        if(end==node) return node_cost;
+        pq.pop();
+        vis[node]=1;
+        for(auto [nbr_cost,nbr]:g[node])
+        {
+            if(!vis[nbr])
+                pq.push({node_cost+nbr_cost,nbr});
+        }
+    }
+    return -1;
+}
 
 
 /*
@@ -165,7 +186,7 @@ void dijkstra_shortest_path(ll start){
  * A bipartite graph is a type of graph whose vertices can be divided into two disjoint sets such that no two vertices within the same set are adjacent. 
  * the time complexity of isBipartite is O(V+E)
  * The space complexity of isBipartite is O(V)
- * Note:- in this implementation, you should use an adjacency list, not matrix 
+ * Note:- in this implementation, you should use an adjacency list, not a matrix 
  */
 vector<int>g[N];
 int n,m;
