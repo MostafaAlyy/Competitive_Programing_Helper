@@ -181,6 +181,35 @@ ll dijkstra_shortest_path(ll start ,ll end ){
 }
 
 
+const int N=507;
+vector<pair<ll,ll>>g[N];
+bool vis[N];
+vector<vector<ll>>cost(N,vector<ll>(N,-1));
+// finding the shortest path from every node to every other node and storing it in the cost matrix
+void dijkstra_shortest_path_from_every_node_to_every_node(){
+    for (int start = 0; start < N; ++start) {
+        priority_queue<pair<ll,ll>,deque<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
+        pq.push({0,start});
+        while (!pq.empty()){
+            pair<ll,ll> p = pq.top();   
+            ll node =p.second,node_cost=p.first;
+            pq.pop();
+            if(cost[start][node]!=-1) continue;
+
+            cost[start][node]=node_cost;
+            for(auto [nbr_cost,nbr]:g[node])
+            {
+                if(cost[start][nbr]==-1)
+                    pq.push({node_cost+nbr_cost,nbr});
+            }
+        }
+    }
+
+}
+
+
+
+
 /*
  * Check whether a given graph is Bipartite or not
  * A bipartite graph is a type of graph whose vertices can be divided into two disjoint sets such that no two vertices within the same set are adjacent. 
