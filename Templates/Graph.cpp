@@ -130,6 +130,33 @@ void bfs(int start){
     }
 }
 
+/*
+ * Digkistra BFS  
+ * the time complexity of DFS is O((V + E) log V)
+ * The space complexity of DFS is O(V)
+ */
+const int N=1e5+7;
+vector<pair<ll,ll>>g[N];
+bool vis[N];
+vector<ll>cost(N,-1);
+
+void dijkstra_shortest_path(ll start){
+    priority_queue<pair<ll,ll>,deque<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
+    pq.push({0,start});
+    while (!pq.empty()){
+        pair<ll,ll> p = pq.top();
+        ll node =p.second,node_cost=p.first;
+        pq.pop();
+        if(cost[node]!=-1) continue;
+
+        cost[node]=node_cost;
+        for(auto [nbr_cost,nbr]:g[node])
+        {
+            if(cost[nbr]==-1)
+                pq.push({node_cost+nbr_cost,nbr});
+        }
+    }
+}
 
 
 
