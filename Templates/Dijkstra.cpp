@@ -7,10 +7,10 @@
  */
 const int N=1e5+7;
 vector<pair<ll,ll>>g[N];
-bool vis[N];
-vector<ll>cost(N,-1);
+vector<ll>cost(N);
 
 void dijkstra_shortest_path(ll start){
+   fill(cost.begin(), cost.end(),-1);
     priority_queue<pair<ll,ll>,deque<pair<ll,ll>>,greater<pair<ll,ll>>> pq;
     pq.push({0,start});
     while (!pq.empty()){
