@@ -7,7 +7,7 @@
  */
 const int N=1e5+7;
 vector<pair<ll,ll>>g[N];
-vector<ll>cost(N);
+vector<ll>cost(N,-1);
 
 void dijkstra_shortest_path(ll start){
    fill(cost.begin(), cost.end(),-1);
