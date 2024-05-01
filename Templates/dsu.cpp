@@ -27,3 +27,14 @@ public:
         return true;
     }
 };
+
+
+// return minimum minimum spanning tree length
+ll kruskal(int n, vector<tuple<int, int, int>>&edges){
+    sort(edges.begin(), edges.end());
+    ll ans=0;
+    DSU dsu(n);
+    for(auto [w, u, v]:edges) if(dsu.join(u, v)) ans+=w;
+    return ans;
+}
+
