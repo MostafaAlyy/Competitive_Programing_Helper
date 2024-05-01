@@ -1,3 +1,4 @@
+
 class DSU{
 public:
     int n;
@@ -9,10 +10,12 @@ public:
         // for(int i=0;i<n;i++) parent[i]=i;
         iota(parent.begin(), parent.end(), 0);
     }
+    // Time Complexity: O(log n)
     inline int findParent(int u){
         if(parent[u]==u) return u;
         return parent[u]= findParent(parent[u]);
     }
+    // Time Complexity: O(log n)
     inline bool join(int u, int v){
         u= findParent(u);
         v= findParent(v);
