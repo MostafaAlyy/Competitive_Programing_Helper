@@ -1,4 +1,4 @@
-
+// you can use it if you have q quires in each one you want to know of u and v are connected or not
 class DSU{
 public:
     int n;
