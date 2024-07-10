@@ -5,6 +5,8 @@
   can't used with mod 
   */
 ll nCr(ll n ,ll r){
+    if(r>n)return 0;
+    if(r==n)return 1;
     ll a=1,b=1;
     if(n-r<r)
         r=n-r;
